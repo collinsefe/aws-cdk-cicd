@@ -1,18 +1,22 @@
 import * as cdk from 'aws-cdk-lib';
-import { CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
+import { CodePipeline, CodePipelineSource, ShellStep, CodeBuildStep } from 'aws-cdk-lib/pipelines';
+import { ManualApprovalAction } from 'aws-cdk-lib/aws-codepipeline-actions';
 import { Construct } from 'constructs';
+import { Artifact } from 'aws-cdk-lib/aws-codepipeline';
 import { PipelineStage } from './PipelineStage';
-import { aws_codepipeline_actions } from 'aws-cdk-lib'
-// import { iam, Arn } from 'aws-cdk-lib'
 
 
 export class CdkCicdStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+   // Define artifacts for source and build stages
+   const sourceArtifact = new Artifact();
+   const buildArtifact = new Artifact();
+
 
     const pipeline = new CodePipeline(this, 'AweSomePipeline', {
-      pipelineName: 'AwesomePipeline',
+      pipelineName: 'NonProd-Pipeline',
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('collinsefe/aws-cdk-cicd', 'cicd-practice'),
         commands: [
@@ -38,26 +42,31 @@ export class CdkCicdStack extends cdk.Stack {
 
   const stagingstage = pipeline.addStage(new PipelineStage(this, 'PipelineStagingStage', {
     stageName: 'Staging'
-  }))
+  }))  
+
+  
+  //  // Add a manual approval step before deploying to Staging
+  //  pipeline.stage('Staging').addAction(new ManualApprovalAction({
+  //   actionName: 'ManualApprovalBeforeStaging',
+  //   runOrder: 1 // Ensure it's the first action in the stage
+  // }));
+
+  // new ManualApprovalAction({
+  //   actionName: 'ManualApprovalBeforeProduction',
+  //   notificationTopic: mySnsTopic,  // Notify users via SNS
+  //   externalEntityLink: 'https://my-internal-review-system.example.com'
+  // });
 
 
-const approveStage = pipeline.addStage(new PipelineStage(this, 'PipelineApproveStage', { 
-  stageName: 'Approve' 
+  // // Add the final Production stage
+  // const productionstage = pipeline.addStage(new PipelineStage(this, 'PipelineProductionStage', {
+  //   stageName: 'Production'
+  // }));
 
-}))
+  // // Add a manual approval step before deploying to Production
+  // pipeline.stage('Production').addAction(new ManualApprovalAction({
+  //   actionName: 'ManualApprovalBeforeProduction',
+  //   runOrder: 1
+  // }));
 
-const manualApprovalAction = new aws_codepipeline_actions.ManualApprovalAction({
-  actionName: 'Approve',
-});
-// approveStage.addAction(manualApprovalAction);
-
-// const role = iam.Role.fromRoleArn(this, 'Admin', Arn.format({ service: 'iam', resource: 'role', resourceName: 'Admin' }, this));
-// manualApprovalAction.grantManualApproval(role);
-
-
-  const prodstage = pipeline.addStage(new PipelineStage(this, 'PipelineStagingProd', {
-    stageName: 'Production'
-  }))
-
-  }
-}
+}}
