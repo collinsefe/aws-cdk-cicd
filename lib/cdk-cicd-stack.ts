@@ -1,5 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
-import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
+import { CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
 import { PipelineStage } from './PipelineStage';
 
@@ -25,6 +25,17 @@ export class CdkCicdStack extends cdk.Stack {
     stageName: 'Test'
   }))
 
+  teststage.addPre(new CodeBuildStep('unit-tests', {
+    commands: [
+      'npm ci',
+      'npm test'
+    ]
+  }))
+
+ }
+}
+
+
   // const stagingstage = pipeline.addStage(new PipelineStage(this, 'PipelineStagingStage', {
   //   stageName: 'Staging'
   // }))
@@ -33,5 +44,3 @@ export class CdkCicdStack extends cdk.Stack {
   //   stageName: 'Production'
   // }))
 
-  }
-}
