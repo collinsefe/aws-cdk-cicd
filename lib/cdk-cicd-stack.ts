@@ -22,7 +22,7 @@ export class CdkCicdStack extends cdk.Stack {
       })
     });
   const teststage = pipeline.addStage(new PipelineStage(this, 'PipelineTestStage', {
-    stageName: 'test'
+    stageName: 'Test Stage'
   }))
 
   }
