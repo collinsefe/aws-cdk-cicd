@@ -13,7 +13,6 @@ export class CdkCicdStack extends cdk.Stack {
         commands: [
           'pwd',
           'ls -la',
-          // 'terraform init'
           'npm ci',
           'npx cdk synth'
         ],
