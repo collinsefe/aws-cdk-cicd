@@ -9,16 +9,15 @@ export class CdkCicdStack extends cdk.Stack {
     new CodePipeline(this, 'AweSomePipeline', {
       pipelineName: 'AwesomePipeline',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('collinsefe/aws-secured-pipelines', 'main'),
+        input: CodePipelineSource.gitHub('collinsefe/aws-cdk-cicd', 'cicd-practice'),
         commands: [
           'pwd',
           'ls -la',
-          'terraform init'
-          // 'cd cdk-cicd',
-          // 'npm ci',
-          // 'npx cdk synth'
+          // 'terraform init'
+          'npm ci',
+          'npx cdk synth'
         ],
-        primaryOutputDirectory: 'cdk-cicd/cdk.out'
+        // primaryOutputDirectory: 'cdk-cicd/cdk.out'
 
       })
     })
