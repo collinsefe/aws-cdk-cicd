@@ -10,9 +10,9 @@ export class CdkCicdStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-   // Define artifacts for source and build stages
-   const sourceArtifact = new Artifact();
-   const buildArtifact = new Artifact();
+  //  // Define artifacts for source and build stages
+  //  const sourceArtifact = new Artifact();
+  //  const buildArtifact = new Artifact();
 
 
     const pipeline = new CodePipeline(this, 'AweSomePipeline', {
