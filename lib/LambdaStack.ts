@@ -16,7 +16,7 @@ export class LambdaStack extends Stack {
         new NodejsFunction(this, 'hello-lambda', {
             runtime: Runtime.NODEJS_20_X,
             handler: 'handler',
-            entry: (join(__dirname, '..', 'services', 'hello.ts')),
+            entry: (join(__dirname, '../', 'services', 'hello.ts')),
             environment: {
                 STAGE: props.stageName!
             }
