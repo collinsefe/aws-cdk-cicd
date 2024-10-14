@@ -3,6 +3,7 @@ import { Construct } from "constructs";
 import { LambdaStack } from "./LambdaStack";
 import { VPCStack } from "./vpc";
 import { S3ObjectStack } from "./s3";
+import { ECSStack } from "./ecs"
 
 export class PipelineStage extends Stage {
 
@@ -16,5 +17,7 @@ export class PipelineStage extends Stage {
         new VPCStack(this, 'VPCStack')
 
         new S3ObjectStack(this, 'S3ObjectStack')
+
+        new ECSStack(this, 'ECSStack')
     }
 }
