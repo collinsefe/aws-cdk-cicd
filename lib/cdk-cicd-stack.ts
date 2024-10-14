@@ -31,13 +31,13 @@ export class CdkCicdStack extends cdk.Stack {
   //   ]
   // }));
 
-  const stagingstage = pipeline.addStage(new PipelineStage(this, 'PipelineStagingStage', {
-    stageName: 'Staging'
-  }));
+  // const stagingstage = pipeline.addStage(new PipelineStage(this, 'PipelineStagingStage', {
+  //   stageName: 'Staging'
+  // }));
 
-  const productionstage = pipeline.addStage(new PipelineStage(this, 'PipelineProdStage', {
-    stageName: 'Production'
-  }));
+  // const productionstage = pipeline.addStage(new PipelineStage(this, 'PipelineProdStage', {
+  //   stageName: 'Production'
+  // }));
 
 
 }}
