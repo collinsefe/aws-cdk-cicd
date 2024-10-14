@@ -20,16 +20,16 @@ export class CdkCicdStack extends cdk.Stack {
         ],
       })
     });
-  // const teststage = pipeline.addStage(new PipelineStage(this, 'PipelineTestStage', {
-  //   stageName: 'Test'
-  // }))
+  const teststage = pipeline.addStage(new PipelineStage(this, 'PipelineTestStage', {
+    stageName: 'Test'
+  }))
 
-  // teststage.addPre(new CodeBuildStep('unit-tests', {
-  //   commands: [
-  //     'npm ci',
-  //     'npm test'
-  //   ]
-  // }));
+  teststage.addPre(new CodeBuildStep('unit-tests', {
+    commands: [
+      'npm ci',
+      'npm test'
+    ]
+  }));
 
   // const approvestage = pipeline.addStage(new PipelineStage(this, 'PipelineSApproveStage', {
   //   stageName: 'Approve'
