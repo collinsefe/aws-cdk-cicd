@@ -31,11 +31,6 @@ export class CdkCicdStack extends cdk.Stack {
     ]
   }));
 
-  // const approvestage = pipeline.addStage(new PipelineStage(this, 'PipelineSApproveStage', {
-  //   stageName: 'Approve'
-  // }));
-
-
   const stagingstage = pipeline.addStage(new PipelineStage(this, 'PipelineStagingStage', {
     stageName: 'Staging'
   }));
