@@ -14,10 +14,10 @@ export class PipelineStage extends Stage {
             stageName: props.stageName
         })
 
-        new VPCStack(this, 'VPCStack')
+        // new VPCStack(this, 'VPCStack')
 
-        new S3ObjectStack(this, 'S3ObjectStack')
+        // new S3ObjectStack(this, 'S3ObjectStack')
 
-        new ECSStack(this, 'ECSStack')
+        // new ECSStack(this, 'ECSStack')
     }
 }
