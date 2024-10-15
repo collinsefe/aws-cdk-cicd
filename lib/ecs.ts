@@ -8,23 +8,23 @@ export class ECSStack extends cdk.Stack {
     constructor(scope: Construct, id: string, props?: ECSStackProps) {
         super(scope, id, props);
 
-        const cluster = new ecs.Cluster(this, 'Cluster', {
-            vpc: props?.vpc
-        });
+        // const cluster = new ecs.Cluster(this, 'Cluster', {
+        //     vpc: props?.vpc
+        // });
 
-        const loadBalancedFargateService = new ecsPatterns.ApplicationLoadBalancedFargateService(this, 'Service', {
-            cluster,
-            memoryLimitMiB: 512,
-            desiredCount: 1,
-            cpu: 256,
-            taskImageOptions: {
-                image: ecs.ContainerImage.fromAsset('app', {}),
-            },
-        });
+        // const loadBalancedFargateService = new ecsPatterns.ApplicationLoadBalancedFargateService(this, 'Service', {
+        //     cluster,
+        //     memoryLimitMiB: 512,
+        //     desiredCount: 1,
+        //     cpu: 256,
+        //     taskImageOptions: {
+        //         image: ecs.ContainerImage.fromAsset('app', {}),
+        //     },
+        // });
 
-        loadBalancedFargateService.targetGroup.configureHealthCheck({
-            path: '/health',
-        });
+        // loadBalancedFargateService.targetGroup.configureHealthCheck({
+        //     path: '/health',
+        // });
     }
 }
 
