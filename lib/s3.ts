@@ -9,10 +9,10 @@ export class S3ObjectStack extends Stack {
     super(scope, id, props);
 
         // Set up a bucket
-        new s3.Bucket(this, 'example-bucket', {
-        accessControl: s3.BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
-        encryption: s3.BucketEncryption.S3_MANAGED,
-        blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
-      });
+    //     new s3.Bucket(this, 'example-bucket', {
+    //     accessControl: s3.BucketAccessControl.BUCKET_OWNER_FULL_CONTROL,
+    //     encryption: s3.BucketEncryption.S3_MANAGED,
+    //     blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL
+    //   });
     }
 }
