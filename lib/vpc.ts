@@ -8,15 +8,15 @@ export class VPCStack extends cdk.Stack {
       super(scope, id, props);
   
 
-const vpc = new ec2.Vpc(this, 'TheVPC', {
-    ipAddresses: ec2.IpAddresses.cidr('10.0.0.0/16'),
-  })
+// const vpc = new ec2.Vpc(this, 'TheVPC', {
+//     ipAddresses: ec2.IpAddresses.cidr('10.0.0.0/16'),
+//   })
   
-  // Iterate the private subnets
-  const selection = vpc.selectSubnets({
-    subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS
-  });
-    }}
+//   // Iterate the private subnets
+//   const selection = vpc.selectSubnets({
+//     subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS
+//   });
+}}
 
 // import * as cdk from 'aws-cdk-lib';
 // import { Construct } from 'constructs';

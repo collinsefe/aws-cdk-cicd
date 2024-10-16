@@ -16,7 +16,7 @@ export class PipelineStage extends Stage {
 
         // new VPCStack(this, 'VPCStack')
 
-        new S3ObjectStack(this, 'S3ObjectStack')
+        // new S3ObjectStack(this, 'S3ObjectStack')
 
         // new ECSStack(this, 'ECSStack')
     }
