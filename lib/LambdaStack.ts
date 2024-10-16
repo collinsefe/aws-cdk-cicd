@@ -21,5 +21,5 @@ export class LambdaStack extends Stack {
     //             STAGE: props.stageName!
     //         }
     //     })
-    // }
+    }
 }
